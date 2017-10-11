@@ -6,11 +6,13 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    bgem (0.0.11)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bgem
   clite!
 
 BUNDLED WITH
