@@ -1,0 +1,17 @@
+PATH
+  remote: .
+  specs:
+    clite (0.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  clite!
+
+BUNDLED WITH
+   1.15.4
