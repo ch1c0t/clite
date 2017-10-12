@@ -2,14 +2,15 @@ require 'io/console'
 
 def initialize
   @screen = Screen.new
+  @keyboard = Keyboard.new
 end
 
 def run
   @screen.update
 
   loop do
-    char = STDIN.getch
-    @screen.update char
-    break if char == ?q
+    event = @keyboard.next
+    @screen.update event
+    break if event == ?q
   end
 end

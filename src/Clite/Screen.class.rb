@@ -6,17 +6,16 @@ def initialize
   @rows[3] = '-' * columns_size
 end
 
-def update state = ''
-  char = state
-  update_line_with char
+def update event = ''
+  update_line_with event.to_s
   render_rows
 end
 
 private
-  def update_line_with char
+  def update_line_with string
     line = @rows[2]
     line.clear
-    line << char
+    line << string
   end
 
   def render_rows
