@@ -7,11 +7,23 @@ def initialize
 end
 
 def update event = ''
-  update_line_with event.to_s
+  case event
+  when Time
+    update_header_with event.to_s
+  else
+    update_line_with event.to_s
+  end
+
   render_rows
 end
 
 private
+  def update_header_with string
+    line = @rows[0]
+    line.clear
+    line << string
+  end
+
   def update_line_with string
     line = @rows[2]
     line.clear

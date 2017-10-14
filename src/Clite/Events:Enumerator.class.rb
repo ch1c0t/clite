@@ -13,7 +13,7 @@ private
   def push_current_time_to queue
     Thread.new do
       loop do
-        queue.push Time.now.to_s
+        queue.push Time.now
         sleep 3
       end
     end
