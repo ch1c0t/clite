@@ -14,7 +14,7 @@ private
     Thread.new do
       loop do
         queue.push Time.now
-        sleep 3
+        sleep 1
       end
     end
   end
