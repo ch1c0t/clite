@@ -1,6 +1,6 @@
 def initialize
   rows_size, columns_size = STDIN.winsize
-  @rows = Array.new(rows_size) { String.new capacity: columns_size }
+  @rows = Array.new(rows_size) { String.new }
   
   @rows[1] = '-' * columns_size
   @rows[3] = '-' * columns_size
