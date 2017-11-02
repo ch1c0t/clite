@@ -3,6 +3,7 @@ def initialize
   @rows = Array.new(rows_size) { String.new }
   
   @rows[1] = '-' * columns_size
+  @rows[2] = @rows[4] = String.new
   @rows[3] = '-' * columns_size
 end
 
