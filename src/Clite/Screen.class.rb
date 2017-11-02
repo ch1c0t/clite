@@ -27,7 +27,6 @@ private
 
   def update_line_with string
     line = @rows[2]
-    line.clear
     line << string
   end
 
