@@ -3,7 +3,7 @@ def initialize
   @rows = Array.new(rows_size) { String.new }
   
   @rows[1] = '-' * columns_size
-  @rows[2] = @rows[4] = String.new
+  @rows[2] = @rows[4] = Line.new
   @rows[3] = '-' * columns_size
 end
 
@@ -33,7 +33,7 @@ private
   def render_rows
     escape '2J'   # clear screen
     escape '1;1H' # move to the top left corner
-    print @rows.join "\r\n"
+    print @rows.map(&:to_s).join "\r\n"
   end
 
   def escape code
