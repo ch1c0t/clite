@@ -11,6 +11,6 @@ def run
   loop do
     event = @events.next
     @screen.update event
-    break if event == ?q
+    break if event == [:ctrl, ?q]
   end
 end
