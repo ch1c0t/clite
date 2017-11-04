@@ -12,7 +12,7 @@ def update event = ''
   when Time
     update_header_with event.to_s
   else
-    update_line_with event.to_s
+    update_line_with event
   end
 
   render_rows
