@@ -14,6 +14,10 @@ def << event
   end
 end
 
+def size
+  @string.size
+end
+
 def to_s
   @string
 end

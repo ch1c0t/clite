@@ -34,6 +34,7 @@ private
     escape '2J'   # clear screen
     escape '1;1H' # move to the top left corner
     print @rows.map(&:to_s).join "\r\n"
+    escape "3;#{@rows[2].size+1}H"
   end
 
   def escape code
