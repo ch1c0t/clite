@@ -11,6 +11,11 @@ def << event
     when :backspace
       @string = @string[0..-2]
     end
+  when Array
+    case event
+    when [:ctrl, ?u]
+      @string.clear
+    end
   end
 end
 
