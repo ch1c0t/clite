@@ -19,7 +19,7 @@ def << event
   end
 end
 
-def size
+def cursor
   @string.size
 end
 

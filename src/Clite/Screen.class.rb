@@ -33,7 +33,7 @@ private
     escape '2J'   # clear screen
     escape '1;1H' # move to the top left corner
     print @rows.map(&:to_s).join "\r\n"
-    escape "3;#{@line.size+1}H"
+    escape "3;#{@line.cursor+1}H"
   end
 
   def escape code
