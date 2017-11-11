@@ -19,6 +19,10 @@ def << event
     when [:ctrl, ?u]
       @string.clear
       @cursor = 0
+    when [:ctrl, ?a]
+      @cursor = 0
+    when [:ctrl, ?e]
+      @cursor = @string.size
     end
   end
 end
