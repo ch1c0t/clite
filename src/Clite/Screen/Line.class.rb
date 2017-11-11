@@ -12,8 +12,8 @@ def << event
     case event
     when :backspace
       unless @cursor.zero?
-        @string.slice! (@cursor-1)
         @cursor -= 1
+        @string.slice! @cursor
       end
     end
   when Array
