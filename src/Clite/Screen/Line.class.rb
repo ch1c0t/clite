@@ -6,7 +6,7 @@ end
 def << event
   case event
   when String
-    @string << event
+    @string.insert @cursor, event
     @cursor += event.size
   when Symbol
     case event
