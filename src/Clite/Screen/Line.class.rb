@@ -11,8 +11,10 @@ def << event
   when Symbol
     case event
     when :backspace
-      @string = @string[0..-2]
-      @cursor -= 1 unless @cursor.zero?
+      unless @cursor.zero?
+        @string.slice! (@cursor-1)
+        @cursor -= 1
+      end
     end
   when Array
     case event
