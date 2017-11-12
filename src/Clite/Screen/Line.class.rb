@@ -25,6 +25,8 @@ def << event
       @cursor = 0
     when [:ctrl, ?e]
       @cursor = @string.size
+    when [:ctrl, ?k]
+      @string = @string[0...@cursor]
     end
   end
 end

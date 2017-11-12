@@ -16,6 +16,8 @@ def initialize
               [:ctrl, ?e]
             when "\u0011"
               [:ctrl, ?q]
+            when "\v"
+              [:ctrl, ?k]
             when "\u007F"
               :backspace
             else
