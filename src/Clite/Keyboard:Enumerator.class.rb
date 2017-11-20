@@ -9,6 +9,7 @@ SEQUENCES = {
   "\v"     => [:ctrl, ?k],
   "\u007F" => :backspace,
 }
+
 def initialize
   super do |y|
     loop do
