@@ -14,7 +14,20 @@ def initialize
   super do |y|
     loop do
       key = STDIN.getch
-      value = SEQUENCES[key] || key
+
+      if key == "\e"
+        left_square_bracket = STDIN.getch
+        fail unless left_square_bracket == ?[
+
+        value = case STDIN.getch
+        when ?D
+          :left_arrow
+        when ?C
+          :right_arrow
+        end
+      else
+        value = SEQUENCES[key] || key
+      end
 
       y << value
     end

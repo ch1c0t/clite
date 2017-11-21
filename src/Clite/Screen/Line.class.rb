@@ -15,6 +15,10 @@ def << event
         @cursor -= 1
         @string.slice! @cursor
       end
+    when :left_arrow
+      @cursor -= 1
+    when :right_arrow
+      @cursor += 1
     end
   when Array
     case event
