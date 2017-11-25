@@ -15,6 +15,8 @@ def << event
         @cursor -= 1
         @string.slice! @cursor
       end
+    when :delete
+      @string.slice! @cursor
     when :left_arrow
       @cursor -= 1
     when :right_arrow

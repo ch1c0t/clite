@@ -24,6 +24,10 @@ def initialize
           :left_arrow
         when ?C
           :right_arrow
+        when ?3
+          tilde = STDIN.getch
+          fail unless tilde == ?~
+          :delete
         end
       else
         value = SEQUENCES[key] || key
