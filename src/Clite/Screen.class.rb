@@ -8,23 +8,11 @@ def initialize
 end
 
 def update event = ''
-  case event
-  when Time
-    update_header_with event.to_s
-  else
-    update_line_with event
-  end
-
+  update_line_with event
   render_rows
 end
 
 private
-  def update_header_with string
-    line = @rows[0]
-    line.clear
-    line << string
-  end
-
   def update_line_with string
     @line << string
   end

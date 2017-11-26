@@ -1,7 +1,6 @@
 def initialize
   queue = Queue.new
 
-  push_current_time_to queue
   push_keyboard_events_to queue
 
   super do |y|
@@ -10,15 +9,6 @@ def initialize
 end
 
 private
-  def push_current_time_to queue
-    Thread.new do
-      loop do
-        queue.push Time.now
-        sleep 1
-      end
-    end
-  end
-
   def push_keyboard_events_to queue
     keyboard = Keyboard.new
 
