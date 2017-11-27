@@ -5,6 +5,9 @@ def initialize
   @rows[1] = '-' * columns_size
   @line = @rows[2] = @rows[4] = Line.new
   @rows[3] = '-' * columns_size
+
+  @buffer = Buffer.new 8
+  @rows[6..13] = @buffer.to_a
 end
 
 def update event = ''
