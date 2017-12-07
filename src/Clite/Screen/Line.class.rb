@@ -11,8 +11,7 @@ def << event
   when Symbol
     case event
     when :enter
-      @string.clear
-      @cursor = 0
+      clear
     when :backspace
       unless @cursor.zero?
         @cursor -= 1
@@ -28,8 +27,7 @@ def << event
   when Array
     case event
     when [:ctrl, ?u]
-      @string.clear
-      @cursor = 0
+      clear
     when [:ctrl, ?a]
       @cursor = 0
     when [:ctrl, ?e]
@@ -45,3 +43,9 @@ attr_reader :cursor
 def to_s
   @string
 end
+
+private
+  def clear
+    @string.clear
+    @cursor = 0
+  end
