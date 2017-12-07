@@ -10,6 +10,9 @@ def << event
     @cursor += event.size
   when Symbol
     case event
+    when :enter
+      @string.clear
+      @cursor = 0
     when :backspace
       unless @cursor.zero?
         @cursor -= 1
