@@ -1,4 +1,5 @@
-def initialize
+def initialize buffer
+  @buffer = buffer
   @string = String.new
   @cursor = 0
 end
@@ -11,6 +12,7 @@ def << event
   when Symbol
     case event
     when :enter
+      @buffer.add @string
       clear
     when :backspace
       unless @cursor.zero?
