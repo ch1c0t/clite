@@ -5,6 +5,7 @@ def initialize
     },
 
     :left_arrow => -> { line.move_cursor_left },
+    :right_arrow => -> { line.move_cursor_right },
   }
 
   rows_size, columns_size = STDIN.winsize
