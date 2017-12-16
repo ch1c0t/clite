@@ -21,8 +21,6 @@ def << event
       end
     when :delete
       @string.slice! @cursor
-    when :left_arrow
-      @cursor -= 1 unless @cursor == 0
     when :right_arrow
       @cursor += 1 unless @cursor >= @string.size
     end
@@ -47,4 +45,8 @@ end
 def clear
   @string.clear
   @cursor = 0
+end
+
+def move_cursor_left
+  @cursor -= 1 unless @cursor == 0
 end

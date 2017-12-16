@@ -3,6 +3,8 @@ def initialize
     [:ctrl, ?u] => -> {
       line.clear
     },
+
+    :left_arrow => -> { line.move_cursor_left },
   }
 
   rows_size, columns_size = STDIN.winsize
