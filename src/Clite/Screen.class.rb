@@ -1,4 +1,10 @@
 def initialize
+  @events = {
+    [:ctrl, ?u] => -> {
+      line.clear
+    },
+  }
+
   rows_size, columns_size = STDIN.winsize
   @rows = Array.new(rows_size) { String.new }
   
@@ -10,14 +16,19 @@ def initialize
   @rows[3] = '-' * columns_size
 end
 
+attr_reader :line
+
 def update event = ''
-  update_line_with event
+  react_to event
   render_rows
 end
 
 private
-  def update_line_with string
-    @line << string
+  def react_to event
+    if screen_event = @events[event]
+      instance_exec &screen_event
+    end
+    @line << event
   end
 
   def render_rows

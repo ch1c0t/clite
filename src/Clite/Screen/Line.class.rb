@@ -28,8 +28,6 @@ def << event
     end
   when Array
     case event
-    when [:ctrl, ?u]
-      clear
     when [:ctrl, ?a]
       @cursor = 0
     when [:ctrl, ?e]
@@ -46,8 +44,7 @@ def to_s
   @string
 end
 
-private
-  def clear
-    @string.clear
-    @cursor = 0
-  end
+def clear
+  @string.clear
+  @cursor = 0
+end
