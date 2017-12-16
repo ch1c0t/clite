@@ -22,7 +22,7 @@ def << event
     when :delete
       @string.slice! @cursor
     when :left_arrow
-      @cursor -= 1
+      @cursor -= 1 unless @cursor == 0
     when :right_arrow
       @cursor += 1 unless @cursor >= @string.size
     end
