@@ -20,11 +20,6 @@ def << event
         @string.slice! @cursor
       end
     end
-  when Array
-    case event
-    when [:ctrl, ?k]
-      @string = @string[0...@cursor]
-    end
   end
 end
 
@@ -49,6 +44,10 @@ end
 
 def delete_where_cursor
   @string.slice! @cursor
+end
+
+def delete_until_end
+  @string = @string[0...@cursor]
 end
 
 def move_cursor_to_start

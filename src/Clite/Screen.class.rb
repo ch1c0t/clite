@@ -3,6 +3,7 @@ def initialize
     [:ctrl, ?u] => -> { line.clear },
     [:ctrl, ?a] => -> { line.move_cursor_to_start },
     [:ctrl, ?e] => -> { line.move_cursor_to_end },
+    [:ctrl, ?k] => -> { line.delete_until_end },
 
     :left_arrow => -> { line.move_cursor_left },
     :right_arrow => -> { line.move_cursor_right },
