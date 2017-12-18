@@ -1,8 +1,6 @@
 def initialize
   @events = {
-    [:ctrl, ?u] => -> {
-      line.clear
-    },
+    [:ctrl, ?u] => -> { line.clear },
     [:ctrl, ?a] => -> { line.move_cursor_to_start },
     [:ctrl, ?e] => -> { line.move_cursor_to_end },
 
