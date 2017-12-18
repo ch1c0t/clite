@@ -38,8 +38,9 @@ private
   def react_to event
     if screen_event = @events[event]
       instance_exec &screen_event
+    else
+      line.add event.to_s
     end
-    @line << event
   end
 
   def render_rows

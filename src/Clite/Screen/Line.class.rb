@@ -3,12 +3,9 @@ def initialize buffer
   @cursor = 0
 end
 
-def << event
-  case event
-  when String
-    @string.insert @cursor, event
-    @cursor += event.size
-  end
+def add string
+  @string.insert @cursor, string
+  @cursor += string.size
 end
 
 attr_reader :cursor
