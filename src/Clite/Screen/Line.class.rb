@@ -22,8 +22,6 @@ def << event
     end
   when Array
     case event
-    when [:ctrl, ?a]
-      @cursor = 0
     when [:ctrl, ?e]
       @cursor = @string.size
     when [:ctrl, ?k]
@@ -53,4 +51,8 @@ end
 
 def delete_where_cursor
   @string.slice! @cursor
+end
+
+def move_cursor_to_start
+  @cursor = 0
 end
