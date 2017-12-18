@@ -1,5 +1,4 @@
 def initialize buffer
-  @buffer = buffer
   @string = String.new
   @cursor = 0
 end
@@ -9,12 +8,6 @@ def << event
   when String
     @string.insert @cursor, event
     @cursor += event.size
-  when Symbol
-    case event
-    when :enter
-      @buffer.add @string
-      clear
-    end
   end
 end
 

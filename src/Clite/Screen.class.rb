@@ -10,6 +10,10 @@ def initialize
 
     :delete => -> { line.delete_where_cursor },
     :backspace => -> { line.backspace },
+    :enter => -> {
+      buffer.add line.to_s
+      line.clear
+    }
   }
 
   rows_size, columns_size = STDIN.winsize
@@ -23,7 +27,7 @@ def initialize
   @rows[3] = '-' * columns_size
 end
 
-attr_reader :line
+attr_reader :line, :buffer
 
 def update event = ''
   react_to event
