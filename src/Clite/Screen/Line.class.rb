@@ -22,8 +22,6 @@ def << event
     end
   when Array
     case event
-    when [:ctrl, ?e]
-      @cursor = @string.size
     when [:ctrl, ?k]
       @string = @string[0...@cursor]
     end
@@ -55,4 +53,8 @@ end
 
 def move_cursor_to_start
   @cursor = 0
+end
+
+def move_cursor_to_end
+  @cursor = @string.size
 end
