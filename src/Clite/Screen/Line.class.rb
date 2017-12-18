@@ -14,11 +14,6 @@ def << event
     when :enter
       @buffer.add @string
       clear
-    when :backspace
-      unless @cursor.zero?
-        @cursor -= 1
-        @string.slice! @cursor
-      end
     end
   end
 end
@@ -40,6 +35,13 @@ end
 
 def move_cursor_right
   @cursor += 1 unless @cursor >= @string.size
+end
+
+def backspace
+  unless @cursor.zero?
+    @cursor -= 1
+    @string.slice! @cursor
+  end
 end
 
 def delete_where_cursor

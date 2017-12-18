@@ -9,6 +9,7 @@ def initialize
     :right_arrow => -> { line.move_cursor_right },
 
     :delete => -> { line.delete_where_cursor },
+    :backspace => -> { line.backspace },
   }
 
   rows_size, columns_size = STDIN.winsize
