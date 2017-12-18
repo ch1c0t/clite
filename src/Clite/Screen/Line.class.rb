@@ -19,8 +19,6 @@ def << event
         @cursor -= 1
         @string.slice! @cursor
       end
-    when :delete
-      @string.slice! @cursor
     end
   when Array
     case event
@@ -53,3 +51,6 @@ def move_cursor_right
   @cursor += 1 unless @cursor >= @string.size
 end
 
+def delete_where_cursor
+  @string.slice! @cursor
+end
