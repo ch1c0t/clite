@@ -1,3 +1,5 @@
+require 'open3'
+
 def initialize
   @events = {
     [:ctrl, ?q] => ->{},
@@ -12,8 +14,10 @@ def initialize
     :delete => -> { line.delete_where_cursor },
     :backspace => -> { line.backspace },
     :enter => -> {
-      buffer.add line.to_s
+      stdout, _stderr, _status = Open3.capture3 line.to_s
       line.clear
+
+      buffer.add stdout
     }
   }
 
