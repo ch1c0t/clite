@@ -24,7 +24,7 @@ def initialize
   rows_size, columns_size = STDIN.winsize
   @rows = Array.new(rows_size) { String.new }
   
-  @buffer = Buffer.new 8
+  @buffer = Buffer.new
   update_buffer
 
   @rows[1] = '-' * columns_size
@@ -57,7 +57,7 @@ private
   end
 
   def update_buffer
-    @rows[6..13] = @buffer.to_a
+    @rows[6..-1] = @buffer.to_a (@rows.size-1)
   end
 
   def escape code

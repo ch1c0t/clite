@@ -1,11 +1,11 @@
-def initialize size
-  @rows = Array.new size do 'some string' end
+def initialize
+  @rows = []
 end
 
 def add string
-  @rows[0] = string.dup
+  @rows = string.split "\n"
 end
 
-def to_a
-  @rows
+def to_a number_of_rows
+  @rows.take number_of_rows
 end
