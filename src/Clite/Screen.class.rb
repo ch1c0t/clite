@@ -57,7 +57,7 @@ private
   end
 
   def update_buffer
-    @rows[6..-1] = @buffer.to_a (@rows.size-1)
+    @rows[6..-1] = @buffer.to_a
   end
 
   def escape code
