@@ -28,7 +28,7 @@ def initialize
   update_buffer
 
   @rows[1] = '-' * columns_size
-  @line = @rows[2] = @rows[4] = Line.new @buffer
+  @line = @rows[2] = Line.new @buffer
   @rows[3] = '-' * columns_size
 end
 
@@ -57,7 +57,7 @@ private
   end
 
   def update_buffer
-    @rows[6..-1] = @buffer.to_a
+    @rows[4..-1] = @buffer.to_a
   end
 
   def escape code
