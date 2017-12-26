@@ -1,4 +1,4 @@
-def initialize buffer
+def initialize
   @string = String.new
   @cursor = 0
 end

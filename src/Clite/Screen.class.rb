@@ -28,7 +28,7 @@ def initialize
   update_buffer
 
   @rows[1] = '-' * columns_size
-  @line = @rows[2] = Line.new @buffer
+  @line = @rows[2] = Line.new
   @rows[3] = '-' * columns_size
 end
 
