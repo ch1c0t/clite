@@ -22,7 +22,7 @@ def initialize
   }
 
   rows_size, columns_size = STDIN.winsize
-  @rows = Array.new(rows_size) { String.new }
+  @rows = Array.new rows_size
   
   @buffer = Buffer.new
   update_buffer
