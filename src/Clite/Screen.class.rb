@@ -22,11 +22,8 @@ def initialize
   }
 
   initialize_borders
-  
-  @buffer = Buffer.new
+  initialize_components
   update_buffer
-
-  @line = @rows[2] = Line.new
 end
 
 attr_reader :line, :buffer
@@ -66,4 +63,9 @@ private
     @rows = Array.new rows_size
     @rows[1] = '-' * columns_size
     @rows[3] = '-' * columns_size
+  end
+
+  def initialize_components
+    @buffer = Buffer.new
+    @line = @rows[2] = Line.new
   end
