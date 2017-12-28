@@ -21,15 +21,12 @@ def initialize
     }
   }
 
-  rows_size, columns_size = STDIN.winsize
-  @rows = Array.new rows_size
+  initialize_borders
   
   @buffer = Buffer.new
   update_buffer
 
-  @rows[1] = '-' * columns_size
   @line = @rows[2] = Line.new
-  @rows[3] = '-' * columns_size
 end
 
 attr_reader :line, :buffer
@@ -62,4 +59,11 @@ private
 
   def escape code
     print "\e[#{code}"
+  end
+
+  def initialize_borders
+    rows_size, columns_size = STDIN.winsize
+    @rows = Array.new rows_size
+    @rows[1] = '-' * columns_size
+    @rows[3] = '-' * columns_size
   end
