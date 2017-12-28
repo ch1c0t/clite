@@ -23,7 +23,7 @@ def initialize
 
   initialize_borders
   initialize_components
-  update_buffer
+  update
 end
 
 attr_reader :line, :buffer
