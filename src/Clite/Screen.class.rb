@@ -46,7 +46,7 @@ private
     clear
     update_buffer
     print_rows
-    escape "3;#{@line.cursor+1}H"
+    position_cursor
   end
 
   def update_buffer
@@ -76,4 +76,8 @@ private
 
   def print_rows
     print @rows.map(&:to_s).join "\r\n"
+  end
+
+  def position_cursor
+    escape "3;#{@line.cursor+1}H"
   end
