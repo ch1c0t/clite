@@ -45,7 +45,7 @@ private
   def render_rows
     clear
     update_buffer
-    print @rows.map(&:to_s).join "\r\n"
+    print_rows
     escape "3;#{@line.cursor+1}H"
   end
 
@@ -72,4 +72,8 @@ private
   def clear
     escape '2J'   # clear screen
     escape '1;1H' # move to the top left corner
+  end
+
+  def print_rows
+    print @rows.map(&:to_s).join "\r\n"
   end
