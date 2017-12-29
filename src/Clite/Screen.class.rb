@@ -43,8 +43,7 @@ private
   end
 
   def render_rows
-    escape '2J'   # clear screen
-    escape '1;1H' # move to the top left corner
+    clear
     update_buffer
     print @rows.map(&:to_s).join "\r\n"
     escape "3;#{@line.cursor+1}H"
@@ -68,4 +67,9 @@ private
   def initialize_components
     @buffer = Buffer.new
     @line = @rows[2] = Line.new
+  end
+
+  def clear
+    escape '2J'   # clear screen
+    escape '1;1H' # move to the top left corner
   end
