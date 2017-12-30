@@ -35,8 +35,8 @@ end
 
 private
   def react_to event
-    if screen_event = @events[event]
-      instance_exec &screen_event
+    if action = @events[event]
+      instance_exec &action
     else
       line.add event.to_s
     end
