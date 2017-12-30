@@ -17,7 +17,7 @@ def initialize
       stdout, _stderr, _status = Open3.capture3 line.to_s
       line.clear
 
-      buffer.add stdout
+      view.add stdout
     }
   }
 
@@ -26,7 +26,7 @@ def initialize
   update
 end
 
-attr_reader :line, :buffer
+attr_reader :line, :view
 
 def update event = ''
   react_to event
@@ -44,13 +44,13 @@ private
 
   def render_rows
     clear
-    update_buffer
+    update_view
     print_rows
     position_cursor
   end
 
-  def update_buffer
-    @rows[4..-1] = @buffer.to_a
+  def update_view
+    @rows[4..-1] = @view.to_a
   end
 
   def escape code
@@ -66,8 +66,8 @@ private
 
   def initialize_components
     @bar = @rows[0] = Bar.new
-    @buffer = Buffer.new
     @line = @rows[2] = Line.new
+    @view = View.new
   end
 
   def clear
