@@ -65,6 +65,7 @@ private
   end
 
   def initialize_components
+    @bar = @rows[0] = Bar.new
     @buffer = Buffer.new
     @line = @rows[2] = Line.new
   end
