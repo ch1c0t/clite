@@ -24,7 +24,7 @@ def initialize
   }
 
   initialize_borders
-  initialize_components
+  initialize_elements
   update
 end
 
@@ -66,7 +66,7 @@ private
     @rows[3] = '-' * columns_size
   end
 
-  def initialize_components
+  def initialize_elements
     @bar = @rows[0] = Bar.new
     @line = @rows[2] = Line.new
     @view = View.new
