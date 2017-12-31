@@ -15,6 +15,8 @@ def initialize
     :backspace => -> { line.backspace },
     :enter => -> {
       stdout, _stderr, _status = Open3.capture3 line.to_s
+
+      bar.increment
       line.clear
 
       view.add stdout
@@ -26,7 +28,7 @@ def initialize
   update
 end
 
-attr_reader :line, :view
+attr_reader :bar, :line, :view
 
 def update event = ''
   react_to event

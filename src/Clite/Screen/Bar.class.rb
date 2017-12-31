@@ -1,3 +1,11 @@
+def initialize
+  @count = 0
+end
+
+def increment
+  @count += 1
+end
+
 def to_s
-  "Some text in the bar."
+  @count.to_s
 end
