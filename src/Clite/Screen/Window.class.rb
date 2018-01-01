@@ -23,9 +23,15 @@ def add_pane place, name, element
   end
 end
 
+require 'logger'
+L = Logger.new '/tmp/clite.log'
+
 def render
   @panes.each do |pane|
-    @rows[pane.range] = pane.render
+    array = pane.render
+    L.debug pane.range
+    L.debug array
+    @rows[pane.range] = array
   end
 
   @borders.each { |row| add_border_at row }
@@ -39,7 +45,5 @@ private
   end
 
   def find_places_with borders
-    borders = borders.map { |number| number + 1 }
-    borders = [0, *borders, @rows.size-1]
-    borders.each_cons(2).map { |first, second| first...second }
+    [0...1, 2...3, 4...(@rows.size-1)]
   end
