@@ -11,5 +11,5 @@ def to_a
 end
 
 def render size
-  @rows[size]
+  @rows.take size
 end
