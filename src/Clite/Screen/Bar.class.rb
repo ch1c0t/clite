@@ -9,3 +9,9 @@ end
 def to_s
   @count.to_s
 end
+
+def render size
+  array = Array.new size
+  array[0] = to_s
+  array
+end

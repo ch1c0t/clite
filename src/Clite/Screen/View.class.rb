@@ -9,3 +9,7 @@ end
 def to_a
   @rows
 end
+
+def render size
+  @rows[size]
+end

@@ -23,12 +23,11 @@ def initialize
     }
   }
 
-  initialize_borders
-  initialize_elements
+  initialize_window
   update
 end
 
-attr_reader :bar, :line, :view
+attr_reader :window
 
 def update event = ''
   react_to event
@@ -38,38 +37,34 @@ end
 private
   def react_to event
     if action = @events[event]
-      instance_exec &action
+      window.instance_exec &action
     else
-      line.add event.to_s
+      window.line.add event.to_s
     end
   end
 
   def render_rows
     clear
-    update_view
+    update_rows
     print_rows
     position_cursor
   end
 
-  def update_view
-    @rows[4..-1] = @view.to_a
+  def update_rows
+    @rows = window.render
   end
 
   def escape code
     print "\e[#{code}"
   end
 
-  def initialize_borders
-    rows_size, columns_size = STDIN.winsize
-    @rows = Array.new rows_size
-    @rows[1] = '-' * columns_size
-    @rows[3] = '-' * columns_size
-  end
-
-  def initialize_elements
-    @bar = @rows[0] = Bar.new
-    @line = @rows[2] = Line.new
-    @view = View.new
+  def initialize_window
+    @window = Window.new
+    window.borders = [1, 3]
+    
+    window.add_pane 0, :bar, Bar.new
+    window.add_pane 1, :line, Line.new
+    window.add_pane 2, :view, View.new
   end
 
   def clear
@@ -82,5 +77,5 @@ private
   end
 
   def position_cursor
-    escape "3;#{@line.cursor+1}H"
+    escape "3;#{window.line.cursor+1}H"
   end

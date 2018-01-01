@@ -14,6 +14,12 @@ def to_s
   @string
 end
 
+def render size
+  array = Array.new size
+  array[0] = to_s
+  array
+end
+
 def clear
   @string.clear
   @cursor = 0
