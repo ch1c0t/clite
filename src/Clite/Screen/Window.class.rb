@@ -45,5 +45,7 @@ private
   end
 
   def find_places_with borders
-    [0...1, 2...3, 4...(@rows.size-1)]
+    beginnings = [ 0, *borders.map { |n| n+1 } ]
+    endings = [ *borders, (@rows.size-1) ]
+    beginnings.zip(endings).map { |b, e| b...e }
   end
