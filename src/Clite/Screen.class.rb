@@ -1,6 +1,6 @@
 require 'open3'
 
-def initialize
+def initialize window = Window::DEFAULT.new
   @events = {
     [:ctrl, ?q] => -> { exit },
     [:ctrl, ?u] => -> { line.clear },
@@ -23,7 +23,7 @@ def initialize
     }
   }
 
-  initialize_window
+  @window = window
   update
 end
 
@@ -56,15 +56,6 @@ private
 
   def escape code
     print "\e[#{code}"
-  end
-
-  def initialize_window
-    @window = Window.new
-    window.borders = [1, 3]
-    
-    window.add_pane 0, :bar, Bar.new
-    window.add_pane 1, :line, Line.new
-    window.add_pane 2, :view, View.new
   end
 
   def clear
