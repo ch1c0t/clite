@@ -45,13 +45,8 @@ private
 
   def render_rows
     clear
-    update_rows
     print_rows
     position_cursor
-  end
-
-  def update_rows
-    @rows = window.render
   end
 
   def escape code
@@ -64,7 +59,7 @@ private
   end
 
   def print_rows
-    print @rows.map(&:to_s).join "\r\n"
+    print window.render.map(&:to_s).join "\r\n"
   end
 
   def position_cursor
