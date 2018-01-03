@@ -77,5 +77,6 @@ private
   end
 
   def position_cursor
-    escape "3;#{window.line.cursor+1}H"
+    row, column = window.cursor
+    escape "#{row};#{column}H"
   end

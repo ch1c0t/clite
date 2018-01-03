@@ -4,6 +4,10 @@ def initialize
   @panes = []
 end
 
+def cursor
+  [3, line.cursor+1]
+end
+
 def borders= array_of_numbers
   @borders = array_of_numbers
   @places = find_places_with array_of_numbers
