@@ -2,7 +2,6 @@ require 'open3'
 
 def initialize window = Window::DEFAULT.new
   @window = window
-  update
 end
 
 attr_reader :window
