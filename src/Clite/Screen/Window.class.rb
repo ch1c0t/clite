@@ -36,7 +36,7 @@ end
 require 'logger'
 L = Logger.new '/tmp/clite.log'
 
-def render
+def render _size
   @panes.each do |pane|
     array = pane.render
     L.debug pane.range

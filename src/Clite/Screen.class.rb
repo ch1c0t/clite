@@ -2,9 +2,10 @@ require 'open3'
 
 def initialize window = Window::DEFAULT.new
   @window = window
+  @size = Size.new STDIN.winsize
 end
 
-attr_reader :window
+attr_reader :window, :size
 
 def update event = ''
   window.react_to event
@@ -28,7 +29,7 @@ private
   end
 
   def print_rows
-    print window.render.map(&:to_s).join "\r\n"
+    print window.render(size).map(&:to_s).join "\r\n"
   end
 
   def position_cursor
