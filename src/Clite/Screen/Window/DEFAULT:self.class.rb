@@ -28,6 +28,8 @@ def initialize
       view.add stdout
     },
   }
+
+  self.layout = Layout.new
 end
 
 def react_to event

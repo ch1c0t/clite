@@ -4,6 +4,8 @@ def initialize
   @panes = []
 end
 
+attr_accessor :layout
+
 def react_to event
   if action = @events[event]
     instance_exec &action
@@ -36,17 +38,8 @@ end
 require 'logger'
 L = Logger.new '/tmp/clite.log'
 
-def render _size
-  @panes.each do |pane|
-    array = pane.render
-    L.debug pane.range
-    L.debug array
-    @rows[pane.range] = array
-  end
-
-  @borders.each { |row| add_border_at row }
-
-  @rows
+def render size
+  layout.render @panes, size
 end
 
 private
