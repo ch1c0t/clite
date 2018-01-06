@@ -3,9 +3,9 @@ def initialize
 
   self.borders = [1, 3]
   
-  add_pane 0, :bar, Bar.new
-  add_pane 1, :line, Line.new
-  add_pane 2, :view, View.new
+  add_pane 0...1, :bar, Bar.new
+  add_pane 2...3, :line, Line.new
+  add_pane 4...-1, :view, View.new
 
   @events = {
     [:ctrl, ?q] => -> { exit },

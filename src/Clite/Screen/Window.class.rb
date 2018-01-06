@@ -21,18 +21,14 @@ def borders= array_of_numbers
   @places = find_places_with array_of_numbers
 end
 
-def add_pane place, name, element
+def add_pane range, name, element
   define_singleton_method(name) { element }
 
-  if place > @borders.size
-    fail "No place #{place} when there is only #{@borders.size} borders."
-  else
-    pane = Pane.new
-    pane.name = name
-    pane.range = @places[place]
-    pane.element = element
-    @panes << pane
-  end
+  pane = Pane.new
+  pane.name = name
+  pane.range = range
+  pane.element = element
+  @panes << pane
 end
 
 require 'logger'
