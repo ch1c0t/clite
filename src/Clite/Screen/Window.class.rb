@@ -1,7 +1,3 @@
-def initialize
-  @panes = []
-end
-
 attr_accessor :layout
 
 def react_to event
@@ -14,11 +10,11 @@ def cursor
   [3, line.cursor+1]
 end
 
-def add_pane _range, name, pane
+def add_pane name, pane, range
   define_singleton_method(name) { pane }
-  @panes << pane
+  layout[range] = pane
 end
 
 def render size
-  layout.render @panes, size
+  layout.render size
 end

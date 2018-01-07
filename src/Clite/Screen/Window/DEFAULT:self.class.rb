@@ -1,9 +1,11 @@
 def initialize
   super
 
-  add_pane 0...1, :bar, Bar.new
-  add_pane 2...3, :line, Line.new
-  add_pane 4...-1, :view, View.new
+  self.layout = Layout.new
+
+  add_pane :bar, Bar.new, 0...1
+  add_pane :line, Line.new, 2...3
+  add_pane :view, View.new, 4...-1
 
   @events = {
     [:ctrl, ?q] => -> { exit },
@@ -26,8 +28,6 @@ def initialize
       view.add stdout
     },
   }
-
-  self.layout = Layout.new
 end
 
 def react_to event
