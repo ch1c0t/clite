@@ -14,13 +14,8 @@ def cursor
   [3, line.cursor+1]
 end
 
-def add_pane range, name, element
-  define_singleton_method(name) { element }
-
-  pane = Pane.new
-  pane.name = name
-  pane.range = range
-  pane.element = element
+def add_pane _range, name, pane
+  define_singleton_method(name) { pane }
   @panes << pane
 end
 
