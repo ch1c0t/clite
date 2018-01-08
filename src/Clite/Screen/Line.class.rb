@@ -15,7 +15,7 @@ def to_s
 end
 
 def render size
-  array = Array.new size.rows
+  array = Array.new size.of_rows
   array[0] = to_s
   array
 end

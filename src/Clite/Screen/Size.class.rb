@@ -13,3 +13,11 @@ def excerpt range
 end
 
 attr_reader :rows, :columns
+
+def of_rows
+  @rows
+end
+
+def of_columns
+  @columns
+end
