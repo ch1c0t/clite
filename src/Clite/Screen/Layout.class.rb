@@ -9,8 +9,9 @@ def render size
     rows[range] = pane.render size.excerpt(range)
   end
 
-  rows[1] = horizontal_border_of size.columns
-  rows[3] = horizontal_border_of size.columns
+  @panes.keys[0..-2].map(&:last).each do |row|
+    rows[row] = horizontal_border_of size.columns
+  end
 
   rows
 end
