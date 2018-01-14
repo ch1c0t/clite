@@ -1,4 +1,8 @@
-attr_accessor :layout
+def initialize screen
+  @screen = screen
+end
+
+attr_accessor :screen, :layout
 
 def react_to event
   if action = @events[event]

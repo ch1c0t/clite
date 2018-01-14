@@ -1,11 +1,11 @@
 require 'open3'
 
-def initialize window = Window::DEFAULT.new
+def initialize window = Window::DEFAULT.new(self)
   @window = window
   @size = Size.new STDIN.winsize
 end
 
-attr_reader :window, :size
+attr_accessor :window, :size
 
 def update event = ''
   window.react_to event
