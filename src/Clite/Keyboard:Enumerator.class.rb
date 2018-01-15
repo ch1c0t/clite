@@ -21,6 +21,8 @@ def initialize
         fail unless left_square_bracket == ?[
 
         value = case STDIN.getch
+        when ?w
+          [:alt, ?w]
         when ?D
           :left_arrow
         when ?C
