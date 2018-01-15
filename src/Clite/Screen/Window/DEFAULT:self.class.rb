@@ -1,4 +1,4 @@
-def initialize
+def initialize screen
   super
 
   self.layout = Layout.new
