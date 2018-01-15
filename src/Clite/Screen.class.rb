@@ -29,7 +29,7 @@ private
   end
 
   def print_rows
-    print window.render(size).map(&:to_s).join "\r\n"
+    print window.render(size).join "\r\n"
   end
 
   def position_cursor
