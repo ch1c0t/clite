@@ -7,6 +7,8 @@ def initialize screen
   add_pane :line, Line.new, 2...3
   add_pane :view, View.new, 4...-1
 
+  self.active_pane = line
+
   @events = {
     [:ctrl, ?q] => -> { exit },
     [:ctrl, ?u] => -> { line.clear },

@@ -2,7 +2,7 @@ def initialize screen
   @screen = screen
 end
 
-attr_accessor :screen, :layout
+attr_accessor :screen, :layout, :active_pane
 
 def react_to event
   if action = @events[event]
