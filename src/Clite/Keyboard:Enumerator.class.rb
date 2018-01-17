@@ -17,20 +17,21 @@ def initialize
       key = STDIN.getch
 
       if key == "\e"
-        left_square_bracket = STDIN.getch
-        fail unless left_square_bracket == ?[
-
-        value = case STDIN.getch
+        second_symbol = STDIN.getch
+        case second_symbol
+        when ?[
+          value = case STDIN.getch
+          when ?D
+            :left_arrow
+          when ?C
+            :right_arrow
+          when ?3
+            tilde = STDIN.getch
+            fail unless tilde == ?~
+            :delete
+          end
         when ?w
           [:alt, ?w]
-        when ?D
-          :left_arrow
-        when ?C
-          :right_arrow
-        when ?3
-          tilde = STDIN.getch
-          fail unless tilde == ?~
-          :delete
         end
       else
         value = SEQUENCES[key] || key
