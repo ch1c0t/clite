@@ -9,35 +9,34 @@ SEQUENCES = {
   "\n"     => [:ctrl, ?j],
   "\v"     => [:ctrl, ?k],
   "\u007F" => :backspace,
+
+  "\e" => {
+    ?w => [:alt, ?w],
+    ?[ => {
+      ?D => :left_arrow,
+      ?C => :right_arrow,
+      ?3 => {
+        ?~ => :delete,
+      },
+    },
+  },
 }
 
 def initialize
   super do |y|
+    hash = SEQUENCES
+
     loop do
       key = STDIN.getch
+      value = hash[key]
 
-      if key == "\e"
-        second_symbol = STDIN.getch
-        case second_symbol
-        when ?[
-          value = case STDIN.getch
-          when ?D
-            :left_arrow
-          when ?C
-            :right_arrow
-          when ?3
-            tilde = STDIN.getch
-            fail unless tilde == ?~
-            :delete
-          end
-        when ?w
-          [:alt, ?w]
-        end
+      case value
+      when Hash
+        hash = value
       else
-        value = SEQUENCES[key] || key
+        value ? y << value : y << key
+        hash = SEQUENCES
       end
-
-      y << value
     end
   end
 end
