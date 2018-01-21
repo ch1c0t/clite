@@ -1,11 +1,15 @@
 def initialize screen
   super
 
-  self.layout = Layout.new
+  self.layout = Layout.new do
+    pane_at 0...1
+    pane_at 2...3
+    pane_at 4...-1
+  end
 
-  add_pane :bar, Bar.new, 0...1
-  add_pane :line, Line.new, 2...3
-  add_pane :view, View.new, 4...-1
+  add_pane :bar, Bar.new, 0
+  add_pane :line, Line.new, 1
+  add_pane :view, View.new, 2
 
   self.active_pane = line
 

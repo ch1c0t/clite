@@ -14,9 +14,9 @@ def cursor
   [3, line.cursor+1]
 end
 
-def add_pane name, pane, range
-  define_singleton_method(name) { pane }
-  layout[range] = pane
+def add_pane name, element, index
+  define_singleton_method(name) { element }
+  layout[index] = element
 end
 
 def render size

@@ -1,26 +1,40 @@
-def initialize
-  @panes = {}
+def initialize &block
+  @panes = []
+  instance_exec &block if block_given?
+end
+
+def pane_at range
+  @panes << Pane.new(range)
 end
 
 def render size
   rows = Array.new size.rows
 
-  @panes.each do |range, pane|
-    rows[range] = pane.render size.excerpt(range)
+  @panes.each do |pane|
+    range = pane.range
+    rows[range] = pane.element.render size.excerpt(range)
   end
 
-  @panes.keys[0..-2].map(&:last).each do |row|
+  @panes[0..-2].map(&:range).map(&:last).each do |row|
     rows[row] = horizontal_border_of size.columns
   end
 
   rows
 end
 
-def []= range, pane
-  @panes[range] = pane
+def []= index, element
+  @panes[index].element = element
 end
 
 private
   def horizontal_border_of size
     '-' * size
   end
+
+class Pane
+  def initialize range
+    @range = range
+  end
+
+  attr_accessor :range, :element
+end
